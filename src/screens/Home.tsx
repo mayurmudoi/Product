@@ -32,18 +32,21 @@ const ImageContainer = ({image}: ImageProps) => {
 
 const SimilarProdComponent = () => {
 	return (
-		<TouchableOpacity style={styles.similarProdContainer}>
-			<View style={[styles.imgSubContainer, {
+		<View style={styles.similarProdContainer}>
+			<TouchableOpacity style={[styles.imgSubContainer, {
 				padding: 0,
 				alignItems: 'center',
 				paddingVertical: 8
 			}]}>
 				<Image source={require('../../assets/images/img1.png')}
 					   style={styles.similarProdImg}/>
-			</View>
-			<Text style={{fontSize: 16, color: 'gray'}}>Thumbs Up</Text>
-			<Text style={{fontSize: 18, color: 'black', fontWeight: '600'}}>Soft Drink
-				Bottle</Text>
+			</TouchableOpacity>
+			<TouchableOpacity>
+				<Text style={{fontSize: 16, color: 'gray'}}>Thumbs Up</Text>
+				<Text style={{fontSize: 18, color: 'black', fontWeight: '600'}}>Soft Drink
+					Bottle</Text>
+
+			</TouchableOpacity>
 			<Text style={{fontSize: 16, marginTop: 8}}>750 ml</Text>
 			<Text style={{fontSize: 18, color: 'black', fontWeight: '600'}}>₹45</Text>
 			<View style={styles.optionButtonSimilar}>
@@ -53,7 +56,7 @@ const SimilarProdComponent = () => {
 						   style={{height: 14, width: 14, tintColor: 'rgb(27, 166, 114)'}}/>
 				</TouchableOpacity>
 			</View>
-		</TouchableOpacity>
+		</View>
 	)
 }
 
@@ -81,7 +84,7 @@ const Home = () => {
 							<ScrollView horizontal={true} pagingEnabled={true} showsHorizontalScrollIndicator={false}>
 								<ImageContainer image={require('../../assets/images/img1.png')}/>
 								<ImageContainer image={require('../../assets/images/img2.png')}/>
-								<ImageContainer image={require('../../assets/images/img3.png')}/>
+								<ImageContainer image={require('../../assets/images/img4.png')}/>
 							</ScrollView>
 						</View>
 						<View style={{}}>
@@ -134,7 +137,7 @@ const Home = () => {
 						</Text>
 						<ScrollView horizontal={true} pagingEnabled={true} showsHorizontalScrollIndicator={false}
 									style={{paddingHorizontal: 16}}>
-							<View style={{gap: 16, flexDirection: 'row'}}>
+							<View style={{marginRight: 32, gap: 16, flexDirection: 'row'}}>
 								<SimilarProdComponent/>
 								<SimilarProdComponent/>
 								<SimilarProdComponent/>
@@ -187,13 +190,9 @@ const styles = StyleSheet.create({
 	productImage: {
 		height: '80%',
 		width: screenWidth - 72
-		// width: 20,
-		// borderRadius: 16,
-		// borderWidth: 1
 	},
 	body: {
 		borderRadius: 8,
-		// height: '80%',
 		backgroundColor: 'white',
 		width: '100%',
 		padding: 16,
@@ -215,7 +214,7 @@ const styles = StyleSheet.create({
 	},
 	imgStyle: {
 		height: 320,
-		width: 312
+		width: 296,
 	},
 	bulletPoint: {
 		fontSize: 24,
@@ -256,11 +255,12 @@ const styles = StyleSheet.create({
 		borderRadius: 8,
 		borderWidth: 0.8,
 		borderColor: 'lightgray',
-		justifyContent: 'center',
-		alignItems: 'center',
 		elevation: 2,
 		backgroundColor: 'white',
-		flexDirection: 'row'
+		flexDirection: 'row',
+		justifyContent:'center',
+		alignItems:'center',
+		gap:4
 	},
 	descriptionText: {
 		fontSize: 14,
@@ -275,8 +275,7 @@ const styles = StyleSheet.create({
 	},
 	similarProdContainer: {
 		height: 224,
-		// backgroundColor: 'red',
-		width: 150
+		width: 142
 	},
 	similarProdImg: {
 		height: 120,
