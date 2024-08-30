@@ -30,6 +30,33 @@ const ImageContainer = ({image}: ImageProps) => {
 	);
 };
 
+const SimilarProdComponent = () => {
+	return (
+		<TouchableOpacity style={styles.similarProdContainer}>
+			<View style={[styles.imgSubContainer, {
+				padding: 0,
+				alignItems: 'center',
+				paddingVertical: 8
+			}]}>
+				<Image source={require('../../assets/images/img1.png')}
+					   style={styles.similarProdImg}/>
+			</View>
+			<Text style={{fontSize: 16, color: 'gray'}}>Thumbs Up</Text>
+			<Text style={{fontSize: 18, color: 'black', fontWeight: '600'}}>Soft Drink
+				Bottle</Text>
+			<Text style={{fontSize: 16, marginTop: 8}}>750 ml</Text>
+			<Text style={{fontSize: 18, color: 'black', fontWeight: '600'}}>₹45</Text>
+			<View style={styles.optionButtonSimilar}>
+				<TouchableOpacity style={styles.button}>
+					<Text style={{fontSize: 16, color: 'rgb(27, 166, 114)',}}>3 Options</Text>
+					<Image source={require('../../assets/icons/downa.png')}
+						   style={{height: 14, width: 14, tintColor: 'rgb(27, 166, 114)'}}/>
+				</TouchableOpacity>
+			</View>
+		</TouchableOpacity>
+	)
+}
+
 const Home = () => {
 
 	const [showFullIngredients, setShowFullIngredients] = useState(false)
@@ -74,7 +101,6 @@ const Home = () => {
 									   style={{height: 14, width: 14, tintColor: 'rgb(27, 166, 114)'}}/>
 							</TouchableOpacity>
 						</View>
-
 					</View>
 					<View style={styles.body}>
 						<Text style={styles.liBullet}>
@@ -101,6 +127,21 @@ const Home = () => {
 							<BulletListDescription key={index} item={highlight}/>
 						))}
 					</View>
+
+					<View style={styles.body}>
+						<Text style={styles.liBullet}>
+							Similar Products
+						</Text>
+						<ScrollView horizontal={true} pagingEnabled={true} showsHorizontalScrollIndicator={false}
+									style={{paddingHorizontal: 16}}>
+							<View style={{gap: 16, flexDirection: 'row'}}>
+								<SimilarProdComponent/>
+								<SimilarProdComponent/>
+								<SimilarProdComponent/>
+								<SimilarProdComponent/>
+							</View>
+						</ScrollView>
+					</View>
 					<View style={[styles.body, {gap: 0}]}>
 						<Text style={[styles.liBullet, {marginBottom: 16}]}>
 							Seller Details
@@ -117,7 +158,7 @@ const Home = () => {
 						</Text>
 						<Text style={styles.descriptionText}>
 							{
-								showFullDescription ? description : `${description.split(' ').slice(0,40).join(' ')}...`
+								showFullDescription ? description : `${description.split(' ').slice(0, 40).join(' ')}...`
 							}
 							<TouchableOpacity onPress={toggleShowDesc}>
 								<Text style={styles.showMoreText}>
@@ -231,5 +272,19 @@ const styles = StyleSheet.create({
 		color: '#ff8c07',
 		fontWeight: 'bold',
 		marginTop: 8,
+	},
+	similarProdContainer: {
+		height: 224,
+		// backgroundColor: 'red',
+		width: 150
+	},
+	similarProdImg: {
+		height: 120,
+		width: 90
+	},
+	optionButtonSimilar: {
+		position: 'absolute',
+		right: 0,
+		bottom: 4
 	}
 })
